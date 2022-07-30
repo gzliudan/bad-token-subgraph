@@ -1,0 +1,33 @@
+bin/
+
+# npm
+npm-debug.log
+package-lock.json
+
+# yarn
+yarn-debug.log
+yarn-error.log
+yarn.lock
+
+# graph codegen
+generated/
+
+# Build
+build/
+
+# Dependency directories
+node_modules/
+
+# .env
+.env
+.env.local
+.env.dev
+.env.prod
+
+# subgraph
+subgraph.yaml
+subgraph.*.yaml
+!subgraph.template.yaml
+
+# temp files
+temp/

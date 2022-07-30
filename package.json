@@ -1,0 +1,45 @@
+{
+  "name": "bad-token-subgraph",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Daniel Liu",
+  "description": "The subgraph for BadToken on blockchain XinFin and Apothem",
+  "main": "",
+  "keywords": [
+    "BlockChain",
+    "Ethereum",
+    "XinFin",
+    "Apothem",
+    "Solidity",
+    "Smart Contract",
+    "ERC20",
+    "Bad Token",
+    "Typescript",
+    "GraphQL",
+    "The graph",
+    "Subgraph"
+  ],
+  "homepage": "https://github.com/gzliudan/bad-token-subgraph",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gzliudan/bad-token-subgraph"
+  },
+  "bugs": {
+    "url": "https://github.com/gzliudan/bad-token-subgraph/issues",
+    "email": "liudaniel@qq.com"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.14.4",
+    "yarn": ">=1.22.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
+}
