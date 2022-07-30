@@ -1,0 +1,80 @@
+type Account @entity {
+    id: ID! # Set to `'xdc' + Account.address.toHexString()`
+    isErc20: Boolean!
+    blackLists: [AccountBlackList!] @derivedFrom(field: "account")
+    Erc20balances: [Erc20Balance!]! @derivedFrom(field: "account")
+    Erc20approvalsOwner: [Erc20Approval!]! @derivedFrom(field: "owner")
+    Erc20approvalsSpender: [Erc20Approval!]! @derivedFrom(field: "spender")
+    Erc20transferFromEvent: [Erc20Transfer!]! @derivedFrom(field: "from")
+    Erc20transferToEvent: [Erc20Transfer!]! @derivedFrom(field: "to")
+    events: [Event!]! @derivedFrom(field: "emitter")
+}
+
+type BlackList @entity {
+    id: ID! # Set to `'xdc' + Erc20Contract.address.toHexString()`
+    members: [AccountBlackList!]! @derivedFrom(field: "blackList")
+}
+
+type AccountBlackList @entity {
+    id: ID! # Set to `account.id + '-' + blackList.id`
+    account: Account!
+    blackList: BlackList!
+}
+
+type Erc20Contract @entity(immutable: true) {
+    id: ID! # Set to `'xdc' + Erc20Contract.address.toHexString()`
+    name: String
+    symbol: String
+    decimals: Int!
+    totalSupply: Erc20Balance!
+    balances: [Erc20Balance!]! @derivedFrom(field: "contract")
+    approvals: [Erc20Approval!]! @derivedFrom(field: "contract")
+    transfers: [Erc20Transfer!]! @derivedFrom(field: "contract")
+}
+
+type Erc20Balance @entity {
+    id: ID! # Set to `contract.id + '-' + (account ? account.id : 'totalSupply')`
+    contract: Erc20Contract!
+    account: Account
+    value: BigDecimal!
+    valueExact: BigInt!
+    transferFromEvent: [Erc20Transfer!]! @derivedFrom(field: "fromBalance")
+    transferToEvent: [Erc20Transfer!]! @derivedFrom(field: "toBalance")
+}
+
+type Erc20Approval @entity {
+    id: ID! # Set to `contract.id + '-' + owner.id + '-' + spender.id`
+    contract: Erc20Contract!
+    owner: Account!
+    spender: Account!
+    value: BigDecimal!
+    valueExact: BigInt!
+}
+
+type Erc20Transfer implements Event @entity(immutable: true) {
+    id: ID! # Set to `transaction.id + '-' + event.logIndex.toString()`
+    emitter: Account!
+    transaction: Transaction!
+    timestamp: BigInt!
+    contract: Erc20Contract!
+    from: Account
+    fromBalance: Erc20Balance
+    to: Account
+    toBalance: Erc20Balance
+    value: BigDecimal!
+    valueExact: BigInt!
+}
+
+interface Event {
+    id: ID!
+    transaction: Transaction!
+    emitter: Account!
+    timestamp: BigInt!
+}
+
+type Transaction @entity(immutable: true) {
+    id: ID! # Set to `event.transaction.hash.toHexString()`
+    timestamp: BigInt!
+    blockNumber: BigInt!
+    events: [Event!]! @derivedFrom(field: "transaction")
+}
