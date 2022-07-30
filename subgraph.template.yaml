@@ -1,0 +1,37 @@
+specVersion: 0.0.4
+description: bad token subgraph
+repository: https://github.com/gzliudan/xrc20-subgraph
+schema:
+    file: ./schema.graphql
+dataSources:
+    - name: BadToken
+      kind: ethereum/contract
+      network: {{chain_name}}
+      source:
+          abi: BadToken
+          address: '{{bad_token.address}}'
+          startBlock: {{bad_token.block}}
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          file: ./src/bad-token.ts
+          entities:
+              - Account
+              - BlackList
+              - ERC20Contract
+              - ERC20Balance
+              - ERC20Approval
+              - ERC20Transfer
+              - Event
+              - Transaction
+          abis:
+              - name: BadToken
+                file: ./abis/BadToken.json
+          eventHandlers:
+              - event: Approval(indexed address,indexed address,uint256)
+                handler: handleApproval
+              - event: Transfer(indexed address,indexed address,uint256)
+                handler: handleTransfer
+              - event: BlacklistUpdated(indexed address,bool)
+                handler: handleBlacklistUpdated
