@@ -1,0 +1,9 @@
+{
+    "chain_name": "apothem",
+    "chain_id": 51,
+    "bad_token": {
+        "address": "xdc53350795c11cee781a7e174479778f848d76ab2a",
+        "block": 36381303,
+        "hash": "0xbebc0bab1a0f9844b86b8edf3a169bb1eef9337ac8d2684d5ae758b6521c12fe"
+    }
+}

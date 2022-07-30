@@ -1,0 +1,9 @@
+{
+    "chain_name": "mumbai",
+    "chain_id": 80001,
+    "bad_token": {
+        "address": "0x3d48e610B848AE9936253f4F37f8e84f4bc7F52C",
+        "block": 27466951,
+        "hash": "0x97ed8c5d884a869182f51fe51532bb2fa5c7d399c32f03ada91b4f112baba0bc"
+    }
+}
