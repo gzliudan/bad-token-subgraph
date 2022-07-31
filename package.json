@@ -33,6 +33,25 @@
     "npm": ">=6.14.4",
     "yarn": ">=1.22.0"
   },
+  "scripts": {
+    "clean": "rm -rf build/ generated/",
+    "prepare:apothem": "mustache networks/apothem.json subgraph.template.yaml subgraph.apothem.yaml && node scripts/xdc subgraph.apothem.yaml",
+    "prepare:xinfin": "mustache networks/xinfin.json subgraph.template.yaml subgraph.xinfin.yaml && node scripts/xdc subgraph.xinfin.yaml",
+    "prepare:mumbai": "mustache networks/mumbai.json subgraph.template.yaml subgraph.mumbai.yaml",
+    "codegen:apothem": "graph codegen --output-dir generated subgraph.apothem.yaml",
+    "codegen:xinfin": "graph codegen --output-dir generated subgraph.xinfin.yaml",
+    "codegen:mumbai": "graph codegen --output-dir generated subgraph.mumbai.yaml",
+    "make:apothem": "yarn clean && yarn prepare:apothem && yarn codegen:apothem",
+    "make:xinfin": "yarn clean && yarn prepare:xinfin && yarn codegen:xinfin",
+    "make:mumbai": "yarn clean && yarn prepare:mumbai && yarn codegen:mumbai",
+    "create:apothem": "graph create --node http://graph-node:8020 gzliudan/bad-token-subgraph-apothem subgraph.apothem.yaml",
+    "create:xinfin": "graph create --node http://graph-node:8020 gzliudan/bad-token-subgraph-xinfin subgraph.xinfin.yaml",
+    "remove:apothem": "graph remove --node http://graph-node:8020 gzliudan/bad-token-subgraph-apothem subgraph.apothem.yaml",
+    "remove:xinfin": "graph remove --node http://graph-node:8020 gzliudan/bad-token-subgraph-xinfin subgraph.xinfin.yaml",
+    "deploy:apothem": "graph deploy --node http://graph-node:8020 --ipfs http://graph-node:5001 --version-label v0.0.1 gzliudan/bad-token-subgraph-apothem subgraph.apothem.yaml",
+    "deploy:xinfin": "graph deploy --node http://graph-node:8020 --ipfs http://graph-node:5001 --version-label v0.0.1 gzliudan/bad-token-subgraph-xinfin subgraph.xinfin.yaml",
+    "deploy:mumbai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ gzliudan/bad-token-mumbai subgraph.mumbai.yaml"
+  },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.33.0",
     "@graphprotocol/graph-ts": "^0.27.0",
