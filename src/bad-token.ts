@@ -68,15 +68,19 @@ function fetchErc20(address: Address): Erc20Contract {
     let contract = Erc20Contract.load(contractId);
 
     if (contract == null) {
-        const endpoint = BadTokenContract.bind(address);
-        const name = endpoint.try_name();
-        const symbol = endpoint.try_symbol();
-        const decimals = endpoint.try_decimals();
+        // const endpoint = BadTokenContract.bind(address);
+        // const name = endpoint.try_name();
+        // const symbol = endpoint.try_symbol();
+        // const decimals = endpoint.try_decimals();
 
         contract = new Erc20Contract(contractId);
-        contract.name = name.reverted ? null : name.value;
-        contract.symbol = symbol.reverted ? null : symbol.value;
-        contract.decimals = decimals.reverted ? DEFAULT_DECIMALS : decimals.value;
+        // contract.name = name.reverted ? null : name.value;
+        // contract.symbol = symbol.reverted ? null : symbol.value;
+        // contract.decimals = decimals.reverted ? DEFAULT_DECIMALS : decimals.value;
+        // contract.totalSupply = fetchErc20Balance(contract, null).id;
+        contract.name = 'Demo Gold Token';
+        contract.symbol = 'DGLD';
+        contract.decimals = DEFAULT_DECIMALS;
         contract.totalSupply = fetchErc20Balance(contract, null).id;
         contract.save();
 
