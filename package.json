@@ -29,8 +29,8 @@
     "email": "liudaniel@qq.com"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.14.4",
+    "node": ">=18.0.0",
+    "npm": ">=8.6.0",
     "yarn": ">=1.22.0"
   },
   "scripts": {
@@ -53,15 +53,15 @@
     "deploy:mumbai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ gzliudan/bad-token-mumbai subgraph.mumbai.yaml"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.33.0",
-    "@graphprotocol/graph-ts": "^0.27.0",
-    "@typescript-eslint/eslint-plugin": "^5.33.0",
-    "@typescript-eslint/parser": "^5.33.0",
-    "eslint": "^8.21.0",
+    "@graphprotocol/graph-cli": "^0.67.3",
+    "@graphprotocol/graph-ts": "^0.32.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
     "mustache": "^4.2.0",
-    "prettier": "^2.7.1"
+    "prettier": "^3.2.4"
   }
 }
