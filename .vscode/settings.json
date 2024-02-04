@@ -1,11 +1,53 @@
 {
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "eslint.autoFixOnSave": "always",
+        "source.fixAll": "always",
+        "source.fixAll.eslint": "always",
+        "source.fixAll.tslint": "always",
+        "source.fixAll.stylelint": "always"
     },
+    "editor.copyWithSyntaxHighlighting": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.detectIndentation": false,
+    "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.insertSpaces": true,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
     "editor.tabSize": 4,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "on",
+    "explorer.confirmDelete": true,
+    "explorer.confirmDragAndDrop": true,
+    "files.autoGuessEncoding": true,
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 5000
+    "files.autoSaveDelay": 5000,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true,
+        "**/dist/**": true
+    },
+    "git.autofetch": true,
+    "git.confirmSync": true,
+    "git.enableSmartCommit": true,
+    "git.repositoryScanMaxDepth": 3,
+    "git.suggestSmartCommit": true,
+    "markdown.validate.enabled": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.rightClickBehavior": "default",
+    "window.commandCenter": true,
+    "window.zoomLevel": 1,
+    "workbench.editor.enablePreview": false
 }
-
